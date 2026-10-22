@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Talentra Design System v2.0 ───────────────────────────────────────── */
+
+:root {
+  /* Core brand palette — Light */
+  --brand-primary:        #4169D8; /* Primary Blue */
+  --brand-primary-light:  #EAF0FF; /* Light blue accent */
+  --brand-secondary:      #16A34A; /* Emerald green */
+  --brand-secondary-light: #E5F5EC; /* Light green accent */
+  --brand-accent:         #7C5CBF; /* Violet */
+  --brand-accent-light:   #F0EAFF; /* Lavender accent */
+  --brand-amber:          #D97706;
+  --brand-rose:           #DC2626;
+
+  /* Semantic tokens — Light */
+  --background:           #F6F8FB;
+  --foreground:           #172033;
+  --surface:              #FFFFFF;
+  --surface-elevated:     #FFFFFF;
+  --surface-muted:        #F1F4F9;
+  --muted:                #F1F4F9;
+  --muted-foreground:     #5D687A;
+  --muted-subtle:         #7B8494;
+  --border:               #E2E7EF;
+  --primary:              #4169D8;
+  --primary-foreground:   #FFFFFF;
+  --success:              #16A34A;
+  --warning:              #D97706;
+  --danger:               #DC2626;
+  --focus-ring:           #4169D8;
+  --accent-blue:          #EAF0FF;
+  --accent-green:         #E5F5EC;
+  --accent-lavender:      #F0EAFF;
+
+  /* Fallback component tokens */
+  --card:                 0 0% 100%;
+  --card-foreground:      222 47% 11%;
+  --popover:              0 0% 100%;
+  --popover-foreground:   222 47% 11%;
+  --input:                214 32% 91%;
+  --ring:                 224 64% 57%;
+  --radius:               0.5rem;
+}
+
+.dark {
+  /* Core brand palette — Dark */
+  --brand-primary:        #8AA8FF; /* Primary blue for dark mode */
+  --brand-primary-light:  #192440; /* Blue surface */
+  --brand-secondary:      #22C55E;
+  --brand-secondary-light: #14271F; /* Green surface */
+  --brand-accent:         #9B7FD4;
+  --brand-accent-light:   #241D35; /* Lavender surface */
+  --brand-amber:          #F59E0B;
+  --brand-rose:           #EF4444;
+
+  /* Semantic tokens — Dark */
+  --background:           #080A0F;
+  --foreground:           #F4F6FC;
+  --surface:              #11151D;
+  --surface-elevated:     #181E29;
+  --surface-muted:        #151923;
+  --muted:                #151923;
+  --muted-foreground:     #B7C0D0;
+  --muted-subtle:         #8D98AB;
+  --border:               #293140;
+  --primary:              #8AA8FF;
+  --primary-foreground:   #080A0F;
+  --success:              #22C55E;
+  --warning:              #F59E0B;
+  --danger:               #EF4444;
+  --focus-ring:           #8AA8FF;
+  --accent-blue:          #192440;
+  --accent-green:         #14271F;
+  --accent-lavender:      #241D35;
+
+  /* Fallback component tokens */
+  --card:                 224 27% 9%;
+  --card-foreground:      210 40% 98%;
+  --popover:              224 27% 9%;
+  --popover-foreground:   210 40% 98%;
+  --input:                217 33% 17%;
+  --ring:                 224 64% 67%;
+}
+
+/* ─── Base Body Styles ───────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1, "cv02" 1, "cv03" 1, "cv04" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Caret styling strictly for text entry controls */
+input,
+textarea,
+[contenteditable="true"] {
+  caret-color: var(--primary);
+}
+
+input:disabled,
+textarea:disabled {
+  caret-color: auto;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+code, kbd, pre, .font-mono {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* ─── Glassmorphism ─────────────────────────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass {
+  background: rgba(17, 20, 32, 0.8);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Brand Gradient Utilities ──────────────────────────────────────────── */
+
+.gradient-brand {
+  background: linear-gradient(135deg, #5278D9 0%, #7C5CBF 100%);
+}
+
+.gradient-brand-text {
+  background: linear-gradient(135deg, #5278D9 0%, #7C5CBF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-emerald-text {
+  background: linear-gradient(135deg, #34C86B 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-surface {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--brand-primary-light) / 0.6) 0%,
+    transparent 60%
+  );
+}
+
+/* ─── Focus Ring ────────────────────────────────────────────────────────── */
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ─── Micro-animation Utilities ─────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); opacity: 0.8; }
+  70%  { transform: scale(1.05); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+.animate-fade-in-up  { animation: fadeInUp 0.4s ease-out both; }
+.animate-fade-in     { animation: fadeIn 0.3s ease-out both; }
+.animate-float       { animation: floatY 4s ease-in-out infinite; }
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--accent)) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius);
+}
+
+/* ─── Layout Utilities ──────────────────────────────────────────────────── */
+
+.container-prose {
+  max-width: 720px;
+}
+
+/* Smooth transitions for theme switching */
+html {
+  color-scheme: light dark;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Status dot indicator ──────────────────────────────────────────────── */
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+}
+.status-dot.online  { background-color: #34C86B; box-shadow: 0 0 0 2px rgba(52, 200, 107, 0.25); }
+.status-dot.offline { background-color: #F43F5E; }
+.status-dot.pending { background-color: #F59E0B; }
+
+/* ─── Card hover effect ─────────────────────────────────────────────────── */
+
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 32px -4px rgba(82, 120, 217, 0.15);
+  transform: translateY(-1px);
+  border-color: rgba(82, 120, 217, 0.35);
+}
+
+/* ─── Selection color ───────────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(82, 120, 217, 0.25);
+  color: inherit;
+}
